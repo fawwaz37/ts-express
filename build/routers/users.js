@@ -12,7 +12,10 @@ var UserRoutes = /** @class */ (function () {
     }
     UserRoutes.prototype.routes = function () {
         this.router.get('/', userController_1.default.index);
-        this.router.post('/post', userController_1.default.create);
+        this.router.post('/create', userController_1.default.create);
+        this.router.get('/show/:id', userController_1.default.show);
+        this.router.post('/update/:id', userController_1.default.update);
+        this.router.get('/del/:id', userController_1.default.delete);
     };
     return UserRoutes;
 }());

@@ -13,7 +13,10 @@ class UserRoutes implements IRouter {
 
     public routes(): void {
         this.router.get('/', userController.index)
-        this.router.post('/post', userController.create)
+        this.router.post('/create', userController.create)
+        this.router.get('/show/:id', userController.show)
+        this.router.post('/update/:id', userController.update)
+        this.router.get('/del/:id', userController.delete)
     }
 }
 
