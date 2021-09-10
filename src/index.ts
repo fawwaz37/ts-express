@@ -1,5 +1,10 @@
 import express, { Application, Request, Response } from "express";
-import bodyParser from "body-parser";
+import compression from "compression";
+import helmet from "helmet";
+import cors from "cors";
+
+// Router
+import UserRoutes from "./routers/users";
 
 const PORT: number = 8000;
 
@@ -15,17 +20,16 @@ class App {
     protected plugins(): void {
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(express.json());
+        this.app.use(compression());
+        this.app.use(helmet());
+        this.app.use(cors());
     }
 
     protected routes(): void {
         this.app.get('/', (req: Request, res: Response) => {
             res.send('Masuk Pak Eko');
         })
-
-        this.app.post('/posts', (req: Request, res: Response) => {
-            console.log(req.body)
-            res.send(req.body);
-        })
+        this.app.use('/users', UserRoutes);
     }
 }
 

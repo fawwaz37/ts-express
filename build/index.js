@@ -4,6 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
+var compression_1 = __importDefault(require("compression"));
+var helmet_1 = __importDefault(require("helmet"));
+var cors_1 = __importDefault(require("cors"));
+// Router
+var users_1 = __importDefault(require("./routers/users"));
 var PORT = 8000;
 var App = /** @class */ (function () {
     function App() {
@@ -14,15 +19,15 @@ var App = /** @class */ (function () {
     App.prototype.plugins = function () {
         this.app.use(express_1.default.urlencoded({ extended: true }));
         this.app.use(express_1.default.json());
+        this.app.use((0, compression_1.default)());
+        this.app.use((0, helmet_1.default)());
+        this.app.use((0, cors_1.default)());
     };
     App.prototype.routes = function () {
         this.app.get('/', function (req, res) {
             res.send('Masuk Pak Eko');
         });
-        this.app.post('/posts', function (req, res) {
-            console.log(req.body);
-            res.send(req.body);
-        });
+        this.app.use('/users', users_1.default);
     };
     return App;
 }());
