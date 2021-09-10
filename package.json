@@ -6,7 +6,7 @@
   "scripts": {
     "tsc": "rm -rf build/ && tsc",
     "ts": "rm -rf build/ && tsc -w",
-    "dev": "nodemon ./build/index.js",
+    "start": "nodemon ./build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
