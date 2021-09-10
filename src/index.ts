@@ -2,11 +2,10 @@ import express, { Application, Request, Response } from "express";
 import compression from "compression";
 import helmet from "helmet";
 import cors from "cors";
+import { config as dotenv } from "dotenv"
 
 // Router
 import UserRoutes from "./routers/users";
-
-const PORT: number = 8000;
 
 class App {
     public app: Application;
@@ -15,6 +14,7 @@ class App {
         this.app = express();
         this.plugins();
         this.routes();
+        dotenv();
     }
 
     protected plugins(): void {
@@ -43,7 +43,7 @@ class App {
 //     res.send(req.body)
 // })
 const app = new App().app;
-app.listen(PORT, () => {
-    console.log(`App Listening at http://localhost:${PORT}`);
+app.listen(process.env.PORT, () => {
+    console.log(`App Listening at http://localhost:${process.env.PORT}`);
 })
 

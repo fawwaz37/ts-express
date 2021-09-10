@@ -7,14 +7,15 @@ var express_1 = __importDefault(require("express"));
 var compression_1 = __importDefault(require("compression"));
 var helmet_1 = __importDefault(require("helmet"));
 var cors_1 = __importDefault(require("cors"));
+var dotenv_1 = require("dotenv");
 // Router
 var users_1 = __importDefault(require("./routers/users"));
-var PORT = 8000;
 var App = /** @class */ (function () {
     function App() {
         this.app = (0, express_1.default)();
         this.plugins();
         this.routes();
+        (0, dotenv_1.config)();
     }
     App.prototype.plugins = function () {
         this.app.use(express_1.default.urlencoded({ extended: true }));
@@ -41,6 +42,6 @@ var App = /** @class */ (function () {
 //     res.send(req.body)
 // })
 var app = new App().app;
-app.listen(PORT, function () {
-    console.log("App Listening at http://localhost:" + PORT);
+app.listen(process.env.PORT, function () {
+    console.log("App Listening at http://localhost:" + process.env.PORT);
 });
