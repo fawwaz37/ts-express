@@ -33,15 +33,6 @@ class App {
     }
 }
 
-// const app = express();
-//         app.use(express.urlencoded({ extended: true }));
-//         app.use(express.json());
-// app.get('/', (req, res) => {
-//     res.send('test')
-// })
-// app.post('/post', (req, res) => {
-//     res.send(req.body)
-// })
 const app = new App().app;
 app.listen(process.env.PORT, () => {
     console.log(`App Listening at http://localhost:${process.env.PORT}`);
