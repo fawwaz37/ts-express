@@ -27,7 +27,7 @@ class App {
 
     protected routes(): void {
         this.app.get('/', (req: Request, res: Response) => {
-            res.send('Masuk Pak Eko');
+            res.send('Hello World');
         })
         this.app.use('/users', UserRoutes);
     }
