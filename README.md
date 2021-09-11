@@ -1,6 +1,6 @@
-#ts-express
+## ts-express
 
-Simple CRUD on typescript and express
+Simple CRUD using express based on typescript
 
 ## Installing the dependencies
 
